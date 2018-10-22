@@ -14,6 +14,12 @@ exports.up = function(knex, Promise) {
       .timestamp("created_at")
       .notNullable()
       .defaultTo(knex.fn.now());
+  }).createTable("users", function(usersTable) {
+    usersTable.increments("oid");
+
+    usersTable.string("nome", 100).notNullable();
+    usersTable.string("email", 100).notNullable();
+    usersTable.string("senha", 80).notNullable();
   });
 };
 
